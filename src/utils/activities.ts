@@ -139,6 +139,20 @@ export const dailyActivities:Activity[] = [
     iconsUrl: [DEFAULT_ICON],
     utilitiesUrl: [],
   },
+  {
+    name: 'Raw bird meat',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/thumb/Raw_bird_meat_detail.png/100px-Raw_bird_meat_detail.png?86318'],
+    utilitiesUrl: [],
+  },
+  {
+    name: 'Yak hide',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/thumb/Yak-hide_detail.png/100px-Yak-hide_detail.png?13f0a'],
+    utilitiesUrl: [],
+  },
 ];
 
 export const weeklyActivities:Activity[] = [
@@ -194,7 +208,7 @@ export const weeklyActivities:Activity[] = [
   {
     name: 'Familiarisation',
     type: 'weekly',
-    checksRequired: 2,
+    checksRequired: 1,
     iconsUrl: ['https://runescape.wiki/images/thumb/Familiarisation_obelisk.png/300px-Familiarisation_obelisk.png?f2e11'],
     utilitiesUrl: [],
   },
