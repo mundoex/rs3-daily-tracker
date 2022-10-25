@@ -2,7 +2,9 @@ import { createContext, useState } from 'react';
 import { Activity } from '../types/Activity';
 import { ActivitySave } from '../types/ActivitySave';
 import { getActivityById } from '../utils/activities';
-import { getDailyResetTimer, now } from '../utils/date';
+import {
+  getDailyResetTimer, getMonthlyResetTimer, getWeeklyResetTimer, now,
+} from '../utils/date';
 
 interface IActivityContext{
     activities:Map<string, ActivitySave>;
@@ -46,6 +48,16 @@ function load() : Map<string, ActivitySave> {
   return map;
 }
 
+function getActivityResetTimer(activity:Activity) {
+  switch (activity.type) {
+    case 'weekly': return getWeeklyResetTimer().getTime();
+    case 'monthly': return getMonthlyResetTimer().getTime();
+    case 'daily':
+    default:
+      return getDailyResetTimer().getTime();
+  }
+}
+
 export function ActivityProvider(props:ActivityProviderProps) {
   const [activities, setActivities] = useState<Map<string, ActivitySave>>(load());
 
@@ -72,7 +84,7 @@ export function ActivityProvider(props:ActivityProviderProps) {
       if (activity) {
         if (activity.checksRequired === saveActivity.checksCount) {
           saveActivity.completedTimestamp = now().getTime();
-          saveActivity.expiryTimestamp = getDailyResetTimer().getTime();
+          saveActivity.expiryTimestamp = getActivityResetTimer(activity);
         }
       }
     }
@@ -88,7 +100,7 @@ export function ActivityProvider(props:ActivityProviderProps) {
       const activity = getActivityById(saveActivity.id);
       if (activity) {
         saveActivity.completedTimestamp = undefined;
-        saveActivity.expiryTimestamp = getDailyResetTimer().getTime();
+        saveActivity.expiryTimestamp = getActivityResetTimer(activity);
       }
     }
     const newMapRef = new Map(activities);
