@@ -9,7 +9,7 @@ export function now() {
 }
 
 export function getDailyResetTimer() {
-  return dayjs().hour(23).minute(59).second(59)
+  return dayjs().hour(24).minute(59).second(59)
     .toDate();
 }
 
