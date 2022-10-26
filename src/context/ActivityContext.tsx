@@ -19,7 +19,7 @@ interface IActivityContext{
     // eslint-disable-next-line no-unused-vars
     unCheckActivity:(id:string) => void;
 
-    reload:() => void;
+    removeAll:() => void;
 }
 
 const ActivityContext = createContext<IActivityContext|null>(null);
@@ -60,8 +60,6 @@ function getActivityResetTimer(activity:Activity) {
 
 export function ActivityProvider(props:ActivityProviderProps) {
   const [activities, setActivities] = useState<Map<string, ActivitySave>>(load());
-
-  const reload = () => load();
 
   const addActivity = (activity:Activity) => {
     const newMapRef = new Map(activities.set(activity.name, { id: activity.name, checksCount: 0 }));
@@ -108,8 +106,14 @@ export function ActivityProvider(props:ActivityProviderProps) {
     setActivities(newMapRef);
   };
 
+  const removeAll = () => {
+    // eslint-disable-next-line no-undef
+    localStorage.removeItem('activities');
+    setActivities(new Map());
+  };
+
   return <ActivityContext.Provider value={{
-    activities, addActivity, removeActivity, checkActivity, unCheckActivity, reload,
+    activities, addActivity, removeActivity, checkActivity, unCheckActivity, removeAll,
   }}>
     {props.children}
     </ActivityContext.Provider>;

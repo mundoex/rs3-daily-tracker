@@ -43,3 +43,12 @@ export const AddButton = styled.button`
     border-color: #2684ff;
     border-radius: 10%;
 `;
+
+export const ResetButton = styled.button`
+    height:fit-content;
+    border-color: #2684ff;
+    border-radius: 5px;
+    width:20%;
+    align-self:center;
+    margin:5px;
+`;

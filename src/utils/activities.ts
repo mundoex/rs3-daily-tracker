@@ -60,7 +60,7 @@ export const dailyActivities:Activity[] = [
     type: 'daily',
     checksRequired: 1,
     iconsUrl: [DEFAULT_ICON],
-    utilitiesUrl: [],
+    utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Travelling_Merchant%27s_Shop' }],
   },
   {
     name: 'Player Owned Ports',
@@ -116,7 +116,7 @@ export const dailyActivities:Activity[] = [
     type: 'daily',
     checksRequired: 1,
     iconsUrl: ['https://runescape.wiki/images/thumb/Evil_tree_%28normal%29.png/300px-Evil_tree_%28normal%29.png?711bc'],
-    utilitiesUrl: [],
+    utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Evil_Tree#Locating' }],
   },
   {
     name: 'Shooting Star',
@@ -210,7 +210,7 @@ export const weeklyActivities:Activity[] = [
     type: 'weekly',
     checksRequired: 1,
     iconsUrl: ['https://runescape.wiki/images/thumb/Familiarisation_obelisk.png/300px-Familiarisation_obelisk.png?f2e11'],
-    utilitiesUrl: [],
+    utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Familiarisation' }],
   },
 ];
 

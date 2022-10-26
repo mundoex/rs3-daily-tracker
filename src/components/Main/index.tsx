@@ -8,7 +8,7 @@ import { ActivityPicker } from '../ActivityPicker';
 import { SelectPickerProps } from '../SelectPicker';
 import { TrackedActivity } from '../TrackedActivity';
 import {
-  ActivityPickersComponent, AddButton, MainComponent, TrackedActivitiesComponent, TrackedActivityColumn, TrackedActivityColumnActivity, TrackedActivityColumnTitle,
+  ActivityPickersComponent, AddButton, MainComponent, ResetButton, TrackedActivitiesComponent, TrackedActivityColumn, TrackedActivityColumnActivity, TrackedActivityColumnTitle,
 } from './styled';
 import ActivityContext from '../../context/ActivityContext';
 
@@ -68,10 +68,11 @@ export function Main() {
   }, [context, setDaily, setWeekly, setMonthly]);
 
   const onSelect = (activity:Activity) => setSelected(activity);
-
   const onClick = () => selected && context?.addActivity(selected);
   const AddActivityButton = <AddButton onClick={onClick}>Add</AddButton>;
+
   return <MainComponent>
+    <ResetButton onClick={() => context?.removeAll()}>Remove All</ResetButton>
         <ActivityPickersComponent>
           <ActivityPicker key="daily-picker" resetDate={dailyPicker.resetDate} pickerProps={{
             children: AddActivityButton, onSelect, title: dailyPicker.pickerProps.title, options: dailyPicker.pickerProps.options,
