@@ -41,7 +41,10 @@ function load() : Map<string, ActivitySave> {
   if (saveString) {
     const loadedActivities:ActivitySave[] = JSON.parse(saveString);
     loadedActivities.forEach((act) => {
-      const hasExpired = (act?.completedTimestamp && act.expiryTimestamp) ? act?.expiryTimestamp < now().getTime() : false;
+      let hasExpired:boolean = true;
+      if (act.expiryTimestamp) {
+        hasExpired = Boolean(act?.completedTimestamp && act.expiryTimestamp) || act?.expiryTimestamp < now().getTime();
+      }
       map.set(act.id, hasExpired ? { id: act.id, checksCount: 0 } : act);
     });
   }
