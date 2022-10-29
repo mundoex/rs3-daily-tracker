@@ -41,11 +41,8 @@ function load() : Map<string, ActivitySave> {
   if (saveString) {
     const loadedActivities:ActivitySave[] = JSON.parse(saveString);
     loadedActivities.forEach((act) => {
-      let hasExpired:boolean = true;
-      if (act.expiryTimestamp) {
-        hasExpired = Boolean(act?.completedTimestamp && act.expiryTimestamp) || act?.expiryTimestamp < now().getTime();
-      }
-      map.set(act.id, hasExpired ? { id: act.id, checksCount: 0 } : act);
+      const hasExpired:boolean = act.expiryTimestamp < now().getTime();
+      map.set(act.id, hasExpired ? { ...act, checksCount: 0 } : act);
     });
   }
   return map;
@@ -65,7 +62,8 @@ export function ActivityProvider(props:ActivityProviderProps) {
   const [activities, setActivities] = useState<Map<string, ActivitySave>>(load());
 
   const addActivity = (activity:Activity) => {
-    const newMapRef = new Map(activities.set(activity.name, { id: activity.name, checksCount: 0 }));
+    const expiryTimestamp = getActivityResetTimer(activity);
+    const newMapRef = new Map(activities.set(activity.name, { id: activity.name, checksCount: 0, expiryTimestamp }));
     save(Array.from(newMapRef.values()));
     setActivities(newMapRef);
   };
@@ -85,7 +83,6 @@ export function ActivityProvider(props:ActivityProviderProps) {
       if (activity) {
         if (activity.checksRequired === saveActivity.checksCount) {
           saveActivity.completedTimestamp = now().getTime();
-          saveActivity.expiryTimestamp = getActivityResetTimer(activity);
         }
       }
     }
@@ -101,7 +98,6 @@ export function ActivityProvider(props:ActivityProviderProps) {
       const activity = getActivityById(saveActivity.id);
       if (activity) {
         saveActivity.completedTimestamp = undefined;
-        saveActivity.expiryTimestamp = getActivityResetTimer(activity);
       }
     }
     const newMapRef = new Map(activities);
