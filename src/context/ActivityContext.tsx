@@ -29,6 +29,16 @@ interface ActivityProviderProps{
     children:JSX.Element;
 }
 
+function getActivityResetTimer(activity:Activity) {
+  switch (activity.type) {
+    case 'weekly': return getWeeklyResetTimer().getTime();
+    case 'monthly': return getMonthlyResetTimer().getTime();
+    case 'daily':
+    default:
+      return getDailyResetTimer().getTime();
+  }
+}
+
 function save(acts:ActivitySave[]) {
   // eslint-disable-next-line no-undef
   localStorage.setItem('activities', JSON.stringify(acts));
@@ -42,20 +52,13 @@ function load() : Map<string, ActivitySave> {
     const loadedActivities:ActivitySave[] = JSON.parse(saveString);
     loadedActivities.forEach((act) => {
       const hasExpired:boolean = act.expiryTimestamp < now().getTime();
-      map.set(act.id, hasExpired ? { ...act, checksCount: 0 } : act);
+      const activity = getActivityById(act.id);
+      let newResetTimer = 0;
+      if (activity) newResetTimer = getActivityResetTimer(activity);
+      map.set(act.id, hasExpired ? { ...act, checksCount: 0, expiryTimestamp: newResetTimer } : act);
     });
   }
   return map;
-}
-
-function getActivityResetTimer(activity:Activity) {
-  switch (activity.type) {
-    case 'weekly': return getWeeklyResetTimer().getTime();
-    case 'monthly': return getMonthlyResetTimer().getTime();
-    case 'daily':
-    default:
-      return getDailyResetTimer().getTime();
-  }
 }
 
 export function ActivityProvider(props:ActivityProviderProps) {
