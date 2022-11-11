@@ -153,6 +153,13 @@ export const dailyActivities:Activity[] = [
     iconsUrl: ['https://runescape.wiki/images/thumb/Yak-hide_detail.png/100px-Yak-hide_detail.png?13f0a'],
     utilitiesUrl: [],
   },
+  {
+    name: 'Herb Run',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/thumb/Clean_torstol_detail.png/100px-Clean_torstol_detail.png?dc0b3'],
+    utilitiesUrl: [],
+  },
 ];
 
 export const weeklyActivities:Activity[] = [
@@ -211,6 +218,13 @@ export const weeklyActivities:Activity[] = [
     checksRequired: 1,
     iconsUrl: ['https://runescape.wiki/images/thumb/Familiarisation_obelisk.png/300px-Familiarisation_obelisk.png?f2e11'],
     utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Familiarisation' }],
+  },
+  {
+    name: 'Meg',
+    type: 'weekly',
+    checksRequired: 1,
+    iconsUrl: [DEFAULT_ICON],
+    utilitiesUrl: [],
   },
 ];
 
