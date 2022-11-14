@@ -160,6 +160,20 @@ export const dailyActivities:Activity[] = [
     iconsUrl: ['https://runescape.wiki/images/thumb/Clean_torstol_detail.png/100px-Clean_torstol_detail.png?dc0b3'],
     utilitiesUrl: [],
   },
+  {
+    name: 'Potato Cactus',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/thumb/Potato_cactus_detail.png/100px-Potato_cactus_detail.png?3f507'],
+    utilitiesUrl: [],
+  },
+  {
+    name: 'Buckets of slime',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/thumb/Bucket_of_slime_detail.png/100px-Bucket_of_slime_detail.png?821bb'],
+    utilitiesUrl: [],
+  },
 ];
 
 export const weeklyActivities:Activity[] = [
