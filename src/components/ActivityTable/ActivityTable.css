@@ -1,0 +1,57 @@
+.table {
+  display: table;
+  box-sizing: border-box;
+  border-spacing: 2px;
+  text-indent: initial;
+  padding: 0.25em 0.45em;
+  text-align: center;
+  border-collapse: collapse;
+  margin: 1em 0;
+  border: none;
+  box-shadow: 0 0.25rem 0.35rem -0.25rem;
+  background-color: #313e59;
+  color: #cbd9f4;
+}
+
+.table-img{
+  max-width: 40px;
+  max-height: 40px;
+  padding: 2px;
+  vertical-align: middle;
+  width: auto;
+  height: auto;
+}
+
+.table > * > tr > td{
+  border: 1px solid #172136;
+  line-height: 1.75;
+}
+
+.table > * > tr > th{
+  border: 1px solid #172136;
+  line-height: 1.75;
+}
+
+.table-link{
+  color: #8cabe6;
+  text-decoration: none;
+}
+
+.checkbox{
+  cursor: pointer;
+  min-width: 20px;
+  min-height: 20px;
+  padding: 2px;
+}
+
+.thrash-icon{
+  cursor: pointer;
+  max-width: 20px;
+  max-height: 20px;
+  padding: 2px;
+  fill:#cbd9f4;
+}
+
+.tr-highlight{
+  background-color: #2e5e05;
+}

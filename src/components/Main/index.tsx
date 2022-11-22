@@ -6,11 +6,12 @@ import { Activity } from '../../types/Activity';
 import { getDailyResetTimer, getMonthlyResetTimer, getWeeklyResetTimer } from '../../utils/date';
 import { ActivityPicker } from '../ActivityPicker';
 import { SelectPickerProps } from '../SelectPicker';
-import { TrackedActivity } from '../TrackedActivity';
 import {
-  ActivityPickersComponent, AddButton, MainComponent, ResetButton, TrackedActivitiesComponent, TrackedActivityColumn, TrackedActivityColumnActivity, TrackedActivityColumnTitle,
+  ActivityPickersComponent, AddButton, MainComponent, ResetButton, TrackedActivitiesComponent, TrackedActivityColumn,
 } from './styled';
 import ActivityContext from '../../context/ActivityContext';
+
+import { ActivityTable } from '../ActivityTable';
 
 function generateSelectPickerOptions(activities:Activity[]) {
   return activities.map((activity) => ({ label: activity.name, value: activity }));
@@ -71,6 +72,9 @@ export function Main() {
   const onClick = () => selected && context?.addActivity(selected);
   const AddActivityButton = <AddButton onClick={onClick}>Add</AddButton>;
 
+  const onCheck = (checked:boolean, activity:Activity) => (checked ? context?.checkActivity(activity.name) : context?.unCheckActivity(activity.name));
+  const onRemove = (activity:Activity) => (activity) && context?.removeActivity(activity.name);
+
   return <MainComponent>
     <ResetButton onClick={() => context?.removeAll()}>Remove All</ResetButton>
         <ActivityPickersComponent>
@@ -88,27 +92,18 @@ export function Main() {
         </ActivityPickersComponent>
 
         <TrackedActivitiesComponent>
-
-        <TrackedActivityColumn key="daily">
-            <TrackedActivityColumnTitle>Daily:</TrackedActivityColumnTitle>
-            {daily.length > 0 ? daily.map(({ activity, checks }) => <TrackedActivityColumnActivity>
-                <TrackedActivity key={activity.name} activity={activity} checks={checks}/>
-              </TrackedActivityColumnActivity>) : null}
+        <TrackedActivityColumn key="Daily">
+          <ActivityTable title="Daily" activitiesState={daily} onCheck={onCheck} onRemove={onRemove}/>
         </TrackedActivityColumn>
 
-        <TrackedActivityColumn key="weekly">
-            <TrackedActivityColumnTitle>Weekly:</TrackedActivityColumnTitle>
-            {weekly.length > 0 ? weekly.map(({ activity, checks }) => <TrackedActivityColumnActivity>
-                <TrackedActivity key={activity.name} activity={activity} checks={checks}/>
-              </TrackedActivityColumnActivity>) : null}
+        <TrackedActivityColumn key="Weekly">
+          <ActivityTable title="Weekly" activitiesState={weekly} onCheck={onCheck} onRemove={onRemove}/>
         </TrackedActivityColumn>
 
-        <TrackedActivityColumn key="monthly">
-            <TrackedActivityColumnTitle>Monthly:</TrackedActivityColumnTitle>
-            {monthly.length > 0 ? monthly.map(({ activity, checks }) => <TrackedActivityColumnActivity>
-                <TrackedActivity key={activity.name} activity={activity} checks={checks}/>
-              </TrackedActivityColumnActivity>) : null}
+        <TrackedActivityColumn key="Monthly">
+          <ActivityTable title="Monthly" activitiesState={monthly} onCheck={onCheck} onRemove={onRemove}/>
         </TrackedActivityColumn>
+
         </TrackedActivitiesComponent>
 
     </MainComponent>;
