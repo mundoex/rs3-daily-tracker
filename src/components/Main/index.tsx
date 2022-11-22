@@ -7,9 +7,10 @@ import { getDailyResetTimer, getMonthlyResetTimer, getWeeklyResetTimer } from '.
 import { ActivityPicker } from '../ActivityPicker';
 import { SelectPickerProps } from '../SelectPicker';
 import {
-  ActivityPickersComponent, AddButton, MainComponent, ResetButton, TrackedActivitiesComponent, TrackedActivityColumn,
+  ActivityPickersComponent, AddButton, MainComponent, NotesArea, NotesContainer, NotesTitle, ResetButton, TrackedActivitiesComponent, TrackedActivityColumn,
 } from './styled';
 import ActivityContext from '../../context/ActivityContext';
+import NotesContext from '../../context/NotesContext';
 import { ReactComponent as Thrash } from '../../assets/trash.svg';
 import { ActivityTable } from '../ActivityTable';
 
@@ -34,12 +35,13 @@ const monthlyPicker:{resetDate:Date, pickerProps:SelectPickerProps<Activity>} = 
 
 export function Main() {
   const context = useContext(ActivityContext);
-
+  const notesContext = useContext(NotesContext);
   const [selected, setSelected] = useState<Activity>();
 
   const [daily, setDaily] = useState<{activity:Activity, checks:number}[]>([]);
   const [weekly, setWeekly] = useState<{activity:Activity, checks:number}[]>([]);
   const [monthly, setMonthly] = useState<{activity:Activity, checks:number}[]>([]);
+  const [notes, setNotes] = useState<string>('');
 
   useEffect(() => {
     const dailies:{activity:Activity, checks:number}[] = [];
@@ -66,7 +68,8 @@ export function Main() {
     setDaily(dailies);
     setWeekly(weeklies);
     setMonthly(monthlies);
-  }, [context, setDaily, setWeekly, setMonthly]);
+    setNotes(notesContext?.notes || '');
+  }, [context, notesContext, setDaily, setWeekly, setMonthly]);
 
   const onSelect = (activity:Activity) => setSelected(activity);
   const onClick = () => selected && context?.addActivity(selected);
@@ -106,6 +109,11 @@ export function Main() {
         </TrackedActivityColumn>
 
         </TrackedActivitiesComponent>
+
+        <NotesContainer>
+          <NotesTitle>Notes</NotesTitle>
+          <NotesArea onChange={(e) => notesContext?.updateNotes(e.target.value)} value={notes}/>
+        </NotesContainer>
 
     </MainComponent>;
 }

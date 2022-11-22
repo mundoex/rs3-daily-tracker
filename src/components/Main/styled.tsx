@@ -61,3 +61,23 @@ export const ResetButton = styled.div`
     color:red;
     margin:10px;
 `;
+
+export const NotesContainer = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    margin: 10px;
+`;
+
+export const NotesTitle = styled.p`
+    font-weight:700;
+    font-size:125%;
+`;
+
+export const NotesArea = styled.textarea`
+    width: 30%;
+    height:200px;
+    background-color:#313e59;
+    color:#cbd9f4;
+    font-size:125%;
+`;
