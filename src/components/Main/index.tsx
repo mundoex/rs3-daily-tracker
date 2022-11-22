@@ -10,7 +10,7 @@ import {
   ActivityPickersComponent, AddButton, MainComponent, ResetButton, TrackedActivitiesComponent, TrackedActivityColumn,
 } from './styled';
 import ActivityContext from '../../context/ActivityContext';
-
+import { ReactComponent as Thrash } from '../../assets/trash.svg';
 import { ActivityTable } from '../ActivityTable';
 
 function generateSelectPickerOptions(activities:Activity[]) {
@@ -76,7 +76,8 @@ export function Main() {
   const onRemove = (activity:Activity) => (activity) && context?.removeActivity(activity.name);
 
   return <MainComponent>
-    <ResetButton onClick={() => context?.removeAll()}>Remove All</ResetButton>
+
+    <ResetButton onClick={() => context?.removeAll()}> Remove All  <Thrash className='thrash-icon' onClick={() => context?.removeAll()}/> </ResetButton>
         <ActivityPickersComponent>
           <ActivityPicker key="daily-picker" resetDate={dailyPicker.resetDate} pickerProps={{
             children: AddActivityButton, onSelect, title: dailyPicker.pickerProps.title, options: dailyPicker.pickerProps.options,

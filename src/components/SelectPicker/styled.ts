@@ -15,7 +15,7 @@ export const SelectPickerOptionsComponent = styled.div`
     display:flex;
     flex-direction:row;
     justify-content:flex-start;
-    text-align:center;
+    background-color:#313e59;
     cursor:pointer;
     padding:4px;
     :hover{
@@ -25,8 +25,10 @@ export const SelectPickerOptionsComponent = styled.div`
 
 export const SelectPickerImage = styled.img`
     padding-right:8px;
-    width:25px;
-    height:25px;
+    max-width: 30px;
+    max-height: 30px;
+    width: auto;
+    height: auto;
 `;
 
 export const SelectTitleRow = styled.div`

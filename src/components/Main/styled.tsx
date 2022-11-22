@@ -44,11 +44,15 @@ export const AddButton = styled.button`
     border-radius: 10%;
 `;
 
-export const ResetButton = styled.button`
-    height:fit-content;
-    border-color: #2684ff;
-    border-radius: 5px;
-    width:20%;
+export const ResetButton = styled.div`
+    display:flex;
+    font-weight:600;
+    align-items:center;
+    flex-direction:column;
+    justify-content:space-between;
+    align-self:flex-start;
     align-self:center;
-    margin:5px;
+    width: 100px;
+    color:red;
+    margin:10px;
 `;
