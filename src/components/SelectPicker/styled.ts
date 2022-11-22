@@ -9,6 +9,7 @@ export const SelectPickerComponent = styled.div`
 export const SelectComponent = styled(Select)`
     width:200px;
     text-align:start;
+    background-color:#313e59;
 `;
 
 export const SelectTitle = styled.p`
@@ -19,11 +20,11 @@ export const SelectPickerOptionsComponent = styled.div`
     display:flex;
     flex-direction:row;
     justify-content:flex-start;
-    background-color:#313e59;
+    background-color: #313e59;
     cursor:pointer;
     padding:4px;
     :hover{
-        background-color:lightblue;
+        background-color:#8cabe6;
     }
 `;
 

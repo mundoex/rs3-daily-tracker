@@ -174,6 +174,13 @@ export const dailyActivities:Activity[] = [
     iconsUrl: ['https://runescape.wiki/images/thumb/Bucket_of_slime_detail.png/100px-Bucket_of_slime_detail.png?821bb'],
     utilitiesUrl: [{ description: 'Morytania Legs Teleport', url: '' }],
   },
+  {
+    name: 'Jack of trades',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/Jack_of_trades_aura_detail.png?5ab29'],
+    utilitiesUrl: [{ description: 'Wiki Guide', url: 'https://runescape.wiki/w/Jack_of_trades_aura/Routines' }],
+  },
 ];
 
 export const weeklyActivities:Activity[] = [

@@ -17,7 +17,6 @@ export const TrackedActivitiesComponent = styled.div`
   display:flex;
   flex-direction:row;
   justify-content:space-evenly;
-  margin:20px;
   width:100%;
 `;
 

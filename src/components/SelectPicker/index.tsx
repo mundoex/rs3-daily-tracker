@@ -30,6 +30,29 @@ export function SelectPicker<T>(props:SelectPickerProps<T>) {
        {props.children}
         </SelectTitleRow>
 
-        <SelectComponent key={props.title} className={props.className} components={{ Option: SelectPickerOptions }} options={props.options} onChange={onChange}/>
+        <SelectComponent key={props.title} className={props.className} styles={{
+          control: (baseStyles) => ({
+            ...baseStyles,
+            backgroundColor: '#071022',
+          }),
+          dropdownIndicator: (baseStyles) => ({
+            ...baseStyles,
+            color: '#cbd9f4',
+            backgroundColor: '#071022',
+          }),
+          placeholder: (baseStyles) => ({
+            ...baseStyles,
+            color: '#cbd9f4',
+          }),
+          singleValue: (baseStyles) => ({
+            ...baseStyles,
+            color: '#cbd9f4',
+          }),
+          menuList: (baseStyles) => ({
+            ...baseStyles,
+            backgroundColor: '#313e59',
+          }),
+        }}
+      components={{ Option: SelectPickerOptions }} options={props.options} onChange={onChange}/>
     </SelectPickerComponent>;
 }
