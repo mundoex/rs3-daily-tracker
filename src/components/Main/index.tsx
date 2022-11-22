@@ -70,7 +70,7 @@ export function Main() {
 
   const onSelect = (activity:Activity) => setSelected(activity);
   const onClick = () => selected && context?.addActivity(selected);
-  const AddActivityButton = <AddButton onClick={onClick}>Add</AddButton>;
+  const AddActivityButton = <AddButton onClick={onClick}/>;
 
   const onCheck = (checked:boolean, activity:Activity) => (checked ? context?.checkActivity(activity.name) : context?.unCheckActivity(activity.name));
   const onRemove = (activity:Activity) => (activity) && context?.removeActivity(activity.name);

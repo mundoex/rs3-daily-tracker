@@ -11,6 +11,10 @@ export const SelectComponent = styled(Select)`
     text-align:start;
 `;
 
+export const SelectTitle = styled.p`
+    font-weight:700;
+`;
+
 export const SelectPickerOptionsComponent = styled.div`
     display:flex;
     flex-direction:row;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as Add } from '../../assets/add.svg';
 
 export const MainComponent = styled.div`
     display:flex;
@@ -38,10 +39,15 @@ export const TrackedActivityColumnActivity = styled.div`
     margin-bottom:5px;
 `;
 
-export const AddButton = styled.button`
-    height:fit-content;
-    border-color: #2684ff;
-    border-radius: 10%;
+export const AddButton = styled(Add)`
+    color:white;
+    padding:5px;
+    width:20px;
+    height:20px;
+    fill:#8cabe6;
+    border-radius:5px;
+    background-color:#313e59;
+    cursor:pointer;
 `;
 
 export const ResetButton = styled.div`

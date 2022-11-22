@@ -1,5 +1,5 @@
 import {
-  SelectComponent, SelectPickerComponent, SelectPickerImage, SelectPickerOptionsComponent, SelectTitleRow,
+  SelectComponent, SelectPickerComponent, SelectPickerImage, SelectPickerOptionsComponent, SelectTitleRow, SelectTitle,
 } from './styled';
 
 export interface SelectPickerProps<T>{
@@ -26,7 +26,7 @@ export function SelectPicker<T>(props:SelectPickerProps<T>) {
 
   return <SelectPickerComponent>
         <SelectTitleRow>
-        <p>{props.title}</p>
+        <SelectTitle>{props.title}</SelectTitle>
        {props.children}
         </SelectTitleRow>
 
