@@ -3,6 +3,8 @@ body {
   font-family: 'IBM Plex Sans','Helvetica Neue','Arial',sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #071022;
+  color: #cbd9f4;
 }
 
 code {
