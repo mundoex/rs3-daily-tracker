@@ -1,10 +1,10 @@
 import { Material } from '../types/Material';
 
 // eslint-disable-next-line no-unused-vars
-const shops = [
-  'https://runescape.wiki/w/Tamayu%27s_Spear_Stall',
-  'https://runescape.wiki/w/Aleck%27s_Hunter_Emporium',
-  'https://runescape.wiki/w/White_Knight_Master_Armoury',
+export const goodShops = [
+  { name: 'Spear shop', link: 'https://runescape.wiki/w/Tamayu%27s_Spear_Stall' },
+  { name: 'Hunter shop', link: 'https://runescape.wiki/w/Aleck%27s_Hunter_Emporium' },
+  { name: 'White Armour shop', link: 'https://runescape.wiki/w/White_Knight_Master_Armoury' },
 ];
 
 const relics = 'ED1-4 relics';

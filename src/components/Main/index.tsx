@@ -15,7 +15,7 @@ import { ReactComponent as Thrash } from '../../assets/trash.svg';
 import IronmanIcon from '../../assets/ironman-icon.png';
 import { ActivityTable } from '../ActivityTable';
 import { InventionTable } from '../InventionTable';
-import { commonMaterials } from '../../utils/materials';
+import { commonMaterials, goodShops } from '../../utils/materials';
 
 function generateSelectPickerOptions(activities:Activity[]) {
   return activities.map((activity) => ({ label: activity.name, value: activity }));
@@ -124,15 +124,15 @@ export function Main() {
         </TrackedActivityColumn>
 
         </TrackedActivitiesComponent>
-
         <NotesContainer>
           <Header>
           <img src="https://runescape.wiki/images/Invention.png?b4132"></img>
           <NotesTitle>Invention</NotesTitle>
           </Header>
+          <NotesTitle>Good Shops</NotesTitle>
+          {goodShops.map((shop) => <a className="table-link" href={shop.link} target="__blank">{shop.name}</a>)}
           <InventionTable title="Common Materials" materials={commonMaterials}/>
         </NotesContainer>
-
         <NotesContainer>
           <NotesTitle>Notes</NotesTitle>
           <NotesArea onChange={(e) => notesContext?.updateNotes(e.target.value)} value={notes}/>
