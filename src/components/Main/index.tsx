@@ -7,12 +7,15 @@ import { getDailyResetTimer, getMonthlyResetTimer, getWeeklyResetTimer } from '.
 import { ActivityPicker } from '../ActivityPicker';
 import { SelectPickerProps } from '../SelectPicker';
 import {
-  ActivityPickersComponent, AddButton, MainComponent, NotesArea, NotesContainer, NotesTitle, ResetButton, TrackedActivitiesComponent, TrackedActivityColumn,
+  ActivityPickersComponent, AddButton, MainComponent, NotesArea, NotesContainer, NotesTitle, ResetButton, Header, TrackedActivitiesComponent, TrackedActivityColumn,
 } from './styled';
 import ActivityContext from '../../context/ActivityContext';
 import NotesContext from '../../context/NotesContext';
 import { ReactComponent as Thrash } from '../../assets/trash.svg';
+import IronmanIcon from '../../assets/ironman-icon.png';
 import { ActivityTable } from '../ActivityTable';
+import { InventionTable } from '../InventionTable';
+import { commonMaterials } from '../../utils/materials';
 
 function generateSelectPickerOptions(activities:Activity[]) {
   return activities.map((activity) => ({ label: activity.name, value: activity }));
@@ -79,8 +82,20 @@ export function Main() {
   const onRemove = (activity:Activity) => (activity) && context?.removeActivity(activity.name);
 
   return <MainComponent>
+    <Header>
+      <div>
+      <a href='https://runescape.wiki/w/Ironman_Mode/Strategies/Efficient_Ironman_Pathway_Guide' target="__blank">
+        <img className="thrash-icon" src={IronmanIcon}/>
+      </a>
+      <div>Ironman Guide</div>
+      </div>
 
-    <ResetButton onClick={() => context?.removeAll()}> Remove All  <Thrash className='thrash-icon' onClick={() => context?.removeAll()}/> </ResetButton>
+      <ResetButton onClick={() => context?.removeAll()}>
+        <Thrash className='thrash-icon' onClick={() => context?.removeAll()}/>
+        <div>Remove all</div>
+      </ResetButton>
+    </Header>
+
         <ActivityPickersComponent>
           <ActivityPicker key="daily-picker" resetDate={dailyPicker.resetDate} pickerProps={{
             children: AddActivityButton, onSelect, title: dailyPicker.pickerProps.title, options: dailyPicker.pickerProps.options,
@@ -109,6 +124,14 @@ export function Main() {
         </TrackedActivityColumn>
 
         </TrackedActivitiesComponent>
+
+        <NotesContainer>
+          <Header>
+          <img src="https://runescape.wiki/images/Invention.png?b4132"></img>
+          <NotesTitle>Invention</NotesTitle>
+          </Header>
+          <InventionTable title="Common Materials" materials={commonMaterials}/>
+        </NotesContainer>
 
         <NotesContainer>
           <NotesTitle>Notes</NotesTitle>

@@ -6,6 +6,13 @@ export const MainComponent = styled.div`
     flex-direction:column;
 `;
 
+export const Header = styled.div`
+    display:flex;
+    flex-direction:row;
+    justify-content:space-evenly;
+    margin-top:5px;
+`;
+
 export const ActivityPickersComponent = styled.div`
   display:flex;
   flex-direction:row;
