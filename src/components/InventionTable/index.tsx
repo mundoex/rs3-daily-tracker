@@ -22,7 +22,7 @@ export function InventionTable(props:InventionTableProps) {
         <th>Sources</th>
         <th>Info</th>
     </tr>
-    {props.materials.map((material:Material) => <tr key={material.name}>
+    {props.materials.map((material:Material) => <tr key={material.name} className="hoverable-row">
         <td>
             <img className='table-img' src={material.icon}/>
             <a className="table-link" href={material.info} target="__blank">{material.name}</a>

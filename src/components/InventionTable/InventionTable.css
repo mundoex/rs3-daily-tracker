@@ -10,53 +10,38 @@
     border: none;
     background-color: #313e59;
     color: #cbd9f4;
-  }
+}
   
-  .table-img{
+.table-img{
     max-width: 40px;
     max-height: 40px;
     padding: 2px;
     vertical-align: middle;
     width: auto;
     height: auto;
-  }
+}
   
-  .table > * > tr > td{
+.table > * > tr > td{
     border: 1px solid #172136;
     line-height: 1.75;
-  }
+}
   
-  .table > * > tr > th{
+.table > * > tr > th{
     border: 1px solid #172136;
     line-height: 1.75;
-  }
+}
   
-  .table-link{
+.table-link{
     color: #8cabe6;
     text-decoration: none;
-  }
+}
+
+.hoverable-row:hover{
+    background-color: #396e0a;
+}
   
-  .checkbox{
-    cursor: pointer;
-    min-width: 20px;
-    min-height: 20px;
-    padding: 2px;
-  }
-  
-  .thrash-icon{
-    cursor: pointer;
-    max-width: 20px;
-    max-height: 20px;
-    padding: 2px;
-    fill:#cbd9f4;
-  }
-  
-  .tr-highlight{
-    background-color: #2e5e05;
-  }
-  
-  .table-title{
+.table-title{
     font-size: 125%;
     padding:5px;
-  }
+}
   
