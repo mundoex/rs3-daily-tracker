@@ -59,14 +59,14 @@ export const dailyActivities:Activity[] = [
     name: 'Travelling merchant',
     type: 'daily',
     checksRequired: 1,
-    iconsUrl: [DEFAULT_ICON],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Travelling_Merchant%27s_Shop.png/300px-Travelling_Merchant%27s_Shop.png?8d787'],
     utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Travelling_Merchant%27s_Shop' }],
   },
   {
     name: 'Player Owned Ports',
     type: 'daily',
     checksRequired: 1,
-    iconsUrl: [DEFAULT_ICON],
+    iconsUrl: ['https://runescape.wiki/images/Ships_button.png?befae'],
     utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Player-owned_port' }],
   },
   {
@@ -81,7 +81,7 @@ export const dailyActivities:Activity[] = [
     type: 'daily',
     checksRequired: 1,
     iconsUrl: ['https://runescape.wiki/images/Air_rune.png?8953d'],
-    utilitiesUrl: [{ description: 'Recommend Lunar Isle, Pest Control, Mage Arena', url: '' }],
+    utilitiesUrl: [{ description: 'Recommend Lunar Isle, Yannile, Pest Control & Mage Arena', url: '' }],
   },
   {
     name: 'Big Chinchompa',
@@ -181,6 +181,48 @@ export const dailyActivities:Activity[] = [
     iconsUrl: ['https://runescape.wiki/images/Jack_of_trades_aura_detail.png?5ab29'],
     utilitiesUrl: [{ description: 'Wiki Guide', url: 'https://runescape.wiki/w/Jack_of_trades_aura/Routines' }],
   },
+  {
+    name: 'Divine herb patch III',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/Divine_herb_patch_III.png?6cef0'],
+    utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Divine_herb_patch_III' }],
+  },
+  {
+    name: 'Tree run',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/Magic_sapling.png?66f7c'],
+    utilitiesUrl: [{ description: 'Tree run', url: 'https://runescape.wiki/w/Tree_patch' }],
+  },
+  {
+    name: 'Fruit Tree run',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/Magic_sapling.png?66f7c'],
+    utilitiesUrl: [{ description: 'Tree run', url: 'https://runescape.wiki/w/Fruit_Tree_Patch' }],
+  },
+  {
+    name: 'Gorajo card',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/Dungeoneering_Wildcard.png?11b82'],
+    utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Gorajo_card' }],
+  },
+  {
+    name: 'Crystal Sandstone',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/Crystal-flecked_sandstone_%28ore%29.png?5285a'],
+    utilitiesUrl: [],
+  },
+  {
+    name: 'Crystal motherload',
+    type: 'daily',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/Crystal_motherlode_shard.png?987fa'],
+    utilitiesUrl: [{ description: 'Location', url: 'https://runescape.wiki/w/Wythien' }],
+  },
 ];
 
 export const weeklyActivities:Activity[] = [
@@ -195,7 +237,7 @@ export const weeklyActivities:Activity[] = [
     name: 'Herby Werby',
     type: 'weekly',
     checksRequired: 1,
-    iconsUrl: [DEFAULT_ICON],
+    iconsUrl: ['https://runescape.wiki/images/Sasha_chathead.png?ab00f'],
     utilitiesUrl: [{ description: 'Location', url: 'https://runescape.wiki/w/Herby_Werby#Gameplay' }],
   },
   {
@@ -216,7 +258,7 @@ export const weeklyActivities:Activity[] = [
     name: 'Circus',
     type: 'weekly',
     checksRequired: 1,
-    iconsUrl: [DEFAULT_ICON],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Circus_ticket_detail.png/100px-Circus_ticket_detail.png?27643'],
     utilitiesUrl: [{ description: 'Location', url: 'https://runescape.wiki/w/Balthazar_Beauregard%27s_Big_Top_Bonanza#Location' }],
   },
   {
@@ -230,7 +272,7 @@ export const weeklyActivities:Activity[] = [
     name: 'Agoroth',
     type: 'weekly',
     checksRequired: 2,
-    iconsUrl: [DEFAULT_ICON],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Agoroth.png/178px-Agoroth.png?cade6'],
     utilitiesUrl: [{ description: 'Games Necklace Teleport', url: '' }],
   },
   {
@@ -244,8 +286,22 @@ export const weeklyActivities:Activity[] = [
     name: 'Meg',
     type: 'weekly',
     checksRequired: 1,
-    iconsUrl: [DEFAULT_ICON],
+    iconsUrl: ['https://runescape.wiki/images/Meg_chathead.png?09d4c'],
     utilitiesUrl: [{ description: 'Questions', url: 'https://runescape.wiki/w/Meg' }],
+  },
+  {
+    name: 'Invention Guild Machines',
+    type: 'weekly',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/Invention.png?b4132'],
+    utilitiesUrl: [],
+  },
+  {
+    name: 'Compost Restock',
+    type: 'weekly',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/Supercompost.png?c0b34'],
+    utilitiesUrl: [],
   },
 ];
 
@@ -254,7 +310,7 @@ export const monthlyActivities:Activity[] = [
     name: 'Troll Invasion',
     type: 'monthly',
     checksRequired: 1,
-    iconsUrl: [DEFAULT_ICON],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Reward_book_detail.png/100px-Reward_book_detail.png?35f78'],
     utilitiesUrl: [{ description: 'Location', url: 'https://runescape.wiki/w/Troll_Invasion#Tips' }],
   },
   {
@@ -262,15 +318,22 @@ export const monthlyActivities:Activity[] = [
     name: 'Giant Oyster',
     type: 'monthly',
     checksRequired: 1,
-    iconsUrl: [DEFAULT_ICON],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Oyster_%28Giant_Oyster%2C_open%29.png/300px-Oyster_%28Giant_Oyster%2C_open%29.png?19d1c'],
     utilitiesUrl: [{ description: 'Location', url: 'https://runescape.wiki/w/Wizard_Myrtle' }],
   },
   {
     name: 'God Statues',
     type: 'monthly',
     checksRequired: 5,
-    iconsUrl: [DEFAULT_ICON],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Statue_of_Zilyana_%28level_1%2B%29.png/300px-Statue_of_Zilyana_%28level_1%2B%29.png?2a86d'],
     utilitiesUrl: [{ description: 'Locations', url: 'https://runescape.wiki/w/God_Statues#Locations' }],
+  },
+  {
+    name: 'Effigy Incubator',
+    type: 'monthly',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/Erratic_effigy.png?2a5d9'],
+    utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Effigy_Incubator' }],
   },
 ];
 
