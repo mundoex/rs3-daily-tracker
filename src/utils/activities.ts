@@ -303,6 +303,13 @@ export const weeklyActivities:Activity[] = [
     iconsUrl: ['https://runescape.wiki/images/Supercompost.png?c0b34'],
     utilitiesUrl: [],
   },
+  {
+    name: 'Anachronia Totems',
+    type: 'weekly',
+    checksRequired: 1,
+    iconsUrl: ['https://runescape.wiki/images/thumb/Totem_of_the_Abyss_detail.png/100px-Totem_of_the_Abyss_detail.png?5e0bb'],
+    utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Totem#Rubble_map' }],
+  },
 ];
 
 export const monthlyActivities:Activity[] = [
