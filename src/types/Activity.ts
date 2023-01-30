@@ -1,5 +1,7 @@
+import { ActivityType } from './ActivityType';
+
 export interface Activity{
-    type:'daily'|'weekly'|'monthly';
+    type:ActivityType;
     name:string;
     checksRequired:number;
     iconsUrl?:string[];

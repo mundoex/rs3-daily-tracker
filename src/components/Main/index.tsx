@@ -7,7 +7,7 @@ import { getDailyResetTimer, getMonthlyResetTimer, getWeeklyResetTimer } from '.
 import { ActivityPicker } from '../ActivityPicker';
 import { SelectPickerProps } from '../SelectPicker';
 import {
-  ActivityPickersComponent, AddButton, MainComponent, NotesArea, NotesContainer, NotesTitle, ResetButton, Header, TrackedActivitiesComponent, TrackedActivityColumn,
+  ActivityPickersComponent, AddButton, MainComponent, NotesContainer, NotesTitle, ResetButton, Header, TrackedActivitiesComponent, TrackedActivityColumn,
 } from './styled';
 import ActivityContext from '../../context/ActivityContext';
 import NotesContext from '../../context/NotesContext';
@@ -16,6 +16,7 @@ import IronmanIcon from '../../assets/ironman-icon.png';
 import { ActivityTable } from '../ActivityTable';
 import { InventionTable } from '../InventionTable';
 import { commonMaterials, goodShops } from '../../utils/materials';
+import { ActivityType } from '../../types/ActivityType';
 
 function generateSelectPickerOptions(activities:Activity[]) {
   return activities.map((activity) => ({ label: activity.name, value: activity }));
@@ -44,42 +45,64 @@ export function Main() {
   const [daily, setDaily] = useState<{activity:Activity, checks:number}[]>([]);
   const [weekly, setWeekly] = useState<{activity:Activity, checks:number}[]>([]);
   const [monthly, setMonthly] = useState<{activity:Activity, checks:number}[]>([]);
-  const [notes, setNotes] = useState<string>('');
+  // const [notes, setNotes] = useState<string>('');
+
+  // ACTIONS
+  const onSelect = (activity:Activity) => setSelected(activity);
+  const onClick = () => selected && context?.addActivity(selected);
+  const onCheck = (checked:boolean, activity:Activity) => (checked ? context?.checkActivity(activity.name) : context?.unCheckActivity(activity.name));
+  const onRemove = (activity:Activity) => (activity) && context?.removeActivity(activity.name);
+  const onShuffle = (type:ActivityType, swapIndex:number, swappieIndex:number) => {
+    let arr; let setArr; let offset;
+    switch (type) {
+      case ActivityType.DAILY:
+        arr = Array.from(daily);
+        setArr = setDaily;
+        offset = 0;
+        break;
+      case ActivityType.WEEKLY:
+        arr = Array.from(weekly);
+        setArr = setWeekly;
+        offset = daily.length;
+        break;
+      case ActivityType.MONTHLY:
+        arr = Array.from(monthly);
+        setArr = setMonthly;
+        offset = daily.length + weekly.length;
+        break;
+      default: return new Error('No such type');
+    }
+    // eslint-disable-next-line prefer-destructuring
+    arr[swapIndex] = arr.splice(swappieIndex, 1, arr[swapIndex])[0];
+    setArr(arr);
+    return context?.swap(swapIndex + offset, swappieIndex + offset);
+  };
+
+  // COMPONENTS
+  const AddActivityButton = <AddButton onClick={onClick}/>;
 
   useEffect(() => {
     const dailies:{activity:Activity, checks:number}[] = [];
     const weeklies:{activity:Activity, checks:number}[] = [];
     const monthlies:{activity:Activity, checks:number}[] = [];
 
-    context?.activities.forEach((value, key) => {
-      const activity = getActivityById(key);
+    // eslint-disable-next-line consistent-return
+    context?.activities.forEach((act) => {
+      const activity = getActivityById(act.id);
       if (activity) {
         switch (activity.type) {
-          case 'daily':
-            dailies.push({ activity, checks: value.checksCount });
-            break;
-          case 'weekly':
-            weeklies.push({ activity, checks: value.checksCount });
-            break;
-          case 'monthly':
-            monthlies.push({ activity, checks: value.checksCount });
-            break;
-          default: throw new Error('Activity type not found');
+          case ActivityType.DAILY: return dailies.push({ activity, checks: act.checksCount });
+          case ActivityType.WEEKLY: return weeklies.push({ activity, checks: act.checksCount });
+          case ActivityType.MONTHLY: return monthlies.push({ activity, checks: act.checksCount });
+          default: return new Error('Activity type not found');
         }
       }
     });
     setDaily(dailies);
     setWeekly(weeklies);
     setMonthly(monthlies);
-    setNotes(notesContext?.notes || '');
+    // setNotes(notesContext?.notes || '');
   }, [context, notesContext, setDaily, setWeekly, setMonthly]);
-
-  const onSelect = (activity:Activity) => setSelected(activity);
-  const onClick = () => selected && context?.addActivity(selected);
-  const AddActivityButton = <AddButton onClick={onClick}/>;
-
-  const onCheck = (checked:boolean, activity:Activity) => (checked ? context?.checkActivity(activity.name) : context?.unCheckActivity(activity.name));
-  const onRemove = (activity:Activity) => (activity) && context?.removeActivity(activity.name);
 
   return <MainComponent>
     <Header>
@@ -112,15 +135,15 @@ export function Main() {
 
         <TrackedActivitiesComponent>
         <TrackedActivityColumn key="Daily">
-          <ActivityTable title="Daily" activitiesState={daily} onCheck={onCheck} onRemove={onRemove}/>
+          <ActivityTable title="Daily" activitiesState={daily} onCheck={onCheck} onRemove={onRemove} onShuffle={onShuffle}/>
         </TrackedActivityColumn>
 
         <TrackedActivityColumn key="Weekly">
-          <ActivityTable title="Weekly" activitiesState={weekly} onCheck={onCheck} onRemove={onRemove}/>
+          <ActivityTable title="Weekly" activitiesState={weekly} onCheck={onCheck} onRemove={onRemove} onShuffle={onShuffle}/>
         </TrackedActivityColumn>
 
         <TrackedActivityColumn key="Monthly">
-          <ActivityTable title="Monthly" activitiesState={monthly} onCheck={onCheck} onRemove={onRemove}/>
+          <ActivityTable title="Monthly" activitiesState={monthly} onCheck={onCheck} onRemove={onRemove} onShuffle={onShuffle}/>
         </TrackedActivityColumn>
 
         </TrackedActivitiesComponent>
@@ -130,13 +153,14 @@ export function Main() {
           <NotesTitle>Invention</NotesTitle>
           </Header>
           <NotesTitle>Good Shops</NotesTitle>
-          {goodShops.map((shop) => <a className="table-link" href={shop.link} target="__blank">{shop.name}</a>)}
+          {goodShops.map((shop) => <a className="table-link" key={shop.name} href={shop.link} target="__blank">{shop.name}</a>)}
           <InventionTable title="Common Materials" materials={commonMaterials}/>
         </NotesContainer>
-        <NotesContainer>
+
+        {/* <NotesContainer>
           <NotesTitle>Notes</NotesTitle>
           <NotesArea onChange={(e) => notesContext?.updateNotes(e.target.value)} value={notes}/>
-        </NotesContainer>
+        </NotesContainer> */}
 
     </MainComponent>;
 }
