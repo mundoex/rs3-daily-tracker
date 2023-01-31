@@ -66,7 +66,7 @@ export function ActivityProvider(props:ActivityProviderProps) {
   };
 
   const removeActivity = (id:string) => {
-    const newRefArr = activities.filter((act) => act.id === id);
+    const newRefArr = activities.filter((act) => act.id !== id);
     save(newRefArr);
     setActivities(newRefArr);
   };
