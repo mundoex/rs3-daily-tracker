@@ -9,6 +9,7 @@ import {
 
 interface IActivityContext{
     activities:ActivitySave[];
+
     // eslint-disable-next-line no-unused-vars
     addActivity:(activity:Activity) => void;
     // eslint-disable-next-line no-unused-vars
@@ -49,7 +50,18 @@ function save(acts:ActivitySave[]) {
 function load() : ActivitySave[] {
   // eslint-disable-next-line no-undef
   const saveString = localStorage.getItem('activities');
-  return saveString ? JSON.parse(saveString) : [];
+
+  if (saveString) {
+    const saveObjArr:ActivitySave[] = JSON.parse(saveString);
+    return saveObjArr.map((act) => {
+      const hasExpired:boolean = act.expiryTimestamp < now().getTime();
+      const activity = getActivityById(act.id);
+      let newResetTimer = 0;
+      if (activity) newResetTimer = getActivityResetTimer(activity);
+      return hasExpired ? { ...act, checksCount: 0, expiryTimestamp: newResetTimer } : act;
+    });
+  }
+  return [];
 }
 
 export function ActivityProvider(props:ActivityProviderProps) {
