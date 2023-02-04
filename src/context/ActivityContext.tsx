@@ -70,6 +70,7 @@ export function ActivityProvider(props:ActivityProviderProps) {
   const getSavedActivityById = (id:string) :ActivitySave|undefined => activities.find((act) => act.id === id);
 
   const addActivity = (activity:Activity) => {
+    if (activities.find((act) => act.id === activity.name)) return;
     const expiryTimestamp = getActivityResetTimer(activity);
     activities.push({ id: activity.name, checksCount: 0, expiryTimestamp });
     const newRefArr = Array.from(activities);
