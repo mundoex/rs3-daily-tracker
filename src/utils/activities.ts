@@ -46,14 +46,14 @@ export const dailyActivities:Activity[] = [
     name: 'Broad arrowheads',
     type: ActivityType.DAILY,
     checksRequired: 1,
-    iconsUrl: ['https://runescape.wiki/images/Broad_arrow_5.png?d21c7'],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Broad_arrow_5_detail.png/100px-Broad_arrow_5_detail.png?49bfd'],
     utilitiesUrl: [{ description: 'Buy from Canifis & Burthorpe', url: '' }],
   },
   {
     name: 'Vis wax',
     type: ActivityType.DAILY,
     checksRequired: 1,
-    iconsUrl: ['https://runescape.wiki/images/Vis_wax.png?8bbab'],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Vis_wax_detail.png/100px-Vis_wax_detail.png?37b96'],
     utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Rune_Goldberg_Machine' }],
   },
   {
@@ -82,7 +82,7 @@ export const dailyActivities:Activity[] = [
     type: ActivityType.DAILY,
     checksRequired: 1,
     iconsUrl: ['https://runescape.wiki/images/Air_rune.png?8953d'],
-    utilitiesUrl: [{ description: 'Recommend Lunar Isle, Yannile, Pest Control & Mage Arena', url: '' }],
+    utilitiesUrl: [{ description: 'Recommend Lunar Isle,\n Yannile,\n Pest Control & Mage Arena', url: '' }],
   },
   {
     name: 'Big Chinchompa',
@@ -186,7 +186,7 @@ export const dailyActivities:Activity[] = [
     name: 'Divine herb patch III',
     type: ActivityType.DAILY,
     checksRequired: 1,
-    iconsUrl: ['https://runescape.wiki/images/Divine_herb_patch_III.png?6cef0'],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Divine_herb_patch_III_detail.png/125px-Divine_herb_patch_III_detail.png?47143'],
     utilitiesUrl: [{ description: 'Wiki', url: 'https://runescape.wiki/w/Divine_herb_patch_III' }],
   },
   {
@@ -214,14 +214,14 @@ export const dailyActivities:Activity[] = [
     name: 'Crystal Sandstone',
     type: ActivityType.DAILY,
     checksRequired: 1,
-    iconsUrl: ['https://runescape.wiki/images/Crystal-flecked_sandstone_%28ore%29.png?5285a'],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Crystal-flecked_sandstone_%28ore%29_detail.png/100px-Crystal-flecked_sandstone_%28ore%29_detail.png?aba30'],
     utilitiesUrl: [],
   },
   {
     name: 'Crystal motherload',
     type: ActivityType.DAILY,
     checksRequired: 1,
-    iconsUrl: ['https://runescape.wiki/images/Crystal_motherlode_shard.png?987fa'],
+    iconsUrl: ['https://runescape.wiki/images/thumb/Crystal_motherlode_shard_detail.png/100px-Crystal_motherlode_shard_detail.png?591a5'],
     utilitiesUrl: [{ description: 'Location', url: 'https://runescape.wiki/w/Wythien' }],
   },
   {
@@ -230,6 +230,13 @@ export const dailyActivities:Activity[] = [
     checksRequired: 1,
     iconsUrl: ['https://runescape.wiki/images/Invention.png?b4132'],
     utilitiesUrl: [],
+  },
+  {
+    name: 'Bloodwood Tree',
+    type: ActivityType.DAILY,
+    checksRequired: 4,
+    iconsUrl: ['https://runescape.wiki/images/thumb/Bakriminel_bolts_5_detail.png/100px-Bakriminel_bolts_5_detail.png?f155d'],
+    utilitiesUrl: [{ description: 'Locatons', url: 'https://runescape.wiki/w/Bloodwood_tree' }],
   },
 ];
 
